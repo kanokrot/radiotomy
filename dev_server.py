@@ -8,7 +8,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parent
 class Handler(SimpleHTTPRequestHandler):
-    ROUTES = {'/', '/atlas', '/reference', '/quiz', '/positioning', '/bmd'}
+    ROUTES = {'/', '/atlas', '/reference', '/quiz', '/positioning', '/bmd', '/learn'}
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT), **kwargs)
     def translate_path(self, path):

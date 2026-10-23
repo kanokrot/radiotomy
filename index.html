@@ -55,6 +55,57 @@ body:has(#page-atlas:not([hidden])) footer{overflow-wrap:anywhere}
 @media(max-width:720px){#page-atlas #view{height:56vh;min-height:340px}#page-atlas aside{order:1}#page-atlas .center{order:0}}
 .ct-image>img{display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain}.reference-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.reference-meta .card{padding:12px}.reference-meta strong{display:block;margin-top:5px;font-size:13px}.reference-controls{align-items:center;justify-content:space-between}.reference-note{line-height:1.6;color:var(--muted)}
 #page-quiz{--reference-header-height:74px;grid-template-columns:280px minmax(0,1fr) 300px;gap:0;padding:0;height:calc(100dvh - var(--reference-header-height));min-height:0;overflow:hidden;background:#000}body.reference-open{overflow:hidden}body.reference-open footer{display:none}#page-quiz .reference-panel{min-width:0;min-height:0;padding:16px;border:0;display:flex;flex-direction:column;gap:12px;overflow:auto;background:#080808}#page-quiz .reference-library{border-right:1px solid #252525}#page-quiz .reference-details{border-left:1px solid #252525}.reference-panel-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.reference-panel-head h2{margin:0;font-size:15px}.reference-panel-head button{min-width:40px;padding:4px 9px}.reference-sex{margin:8px 0 4px;color:#aab6c3;font-size:12px;font-weight:700}.reference-options{display:flex;flex-direction:column;gap:3px}.reference-choice{border:0;background:transparent;text-align:left;color:#aab6c3;padding:8px 10px;min-height:38px;font-size:13px}.reference-choice:hover,.reference-choice.on{background:#171717;color:var(--accent);border-radius:6px}.reference-main{position:relative;min-width:0;min-height:0;display:flex;flex-direction:column;background:#000}.reference-stage{position:relative;min-height:0;min-width:0;flex:1;display:flex;align-items:stretch;justify-content:center;gap:10px;padding:42px 12px;background:#000;overflow:hidden}.reference-image-viewport{position:relative;min-width:0;min-height:0;flex:1;display:grid;place-items:center;overflow:hidden;background:#000;touch-action:none;user-select:none}.reference-image-viewport canvas{display:block;width:100%;height:100%;object-fit:contain;user-select:none;pointer-events:none}.reference-overlay{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;padding:5px 8px;background:rgba(0,0,0,.68);color:#eee;font-size:12px;pointer-events:none}.reference-overlay-top{left:14px;top:8px;right:14px;justify-content:space-between}.reference-overlay-bottom{left:14px;bottom:8px;right:14px;justify-content:space-between;color:#c5c5c5}.reference-count{font-variant-numeric:tabular-nums;font-weight:700}.reference-orientation{font-variant-numeric:tabular-nums;color:#dedede}.reference-slider-wrap{width:36px;flex:none;display:flex;justify-content:center;align-items:center}.reference-slider-wrap input{height:min(66vh,560px);width:24px;writing-mode:vertical-lr;direction:rtl;accent-color:var(--accent);touch-action:none}.reference-floating{position:absolute;z-index:4;top:8px;display:none;min-width:40px;padding:3px 9px;background:rgba(20,20,20,.9)}#page-quiz.left-collapsed{grid-template-columns:0 minmax(0,1fr) 300px}#page-quiz.right-collapsed{grid-template-columns:280px minmax(0,1fr) 0}#page-quiz.left-collapsed .reference-library,#page-quiz.right-collapsed .reference-details{display:none}#page-quiz.left-collapsed #restore-left-panel,#page-quiz.right-collapsed #restore-right-panel{display:block}#restore-left-panel{left:8px}#restore-right-panel{right:8px}.reference-collapse-toggle{position:absolute;z-index:4;top:8px;right:12px;min-width:38px;min-height:34px;padding:2px 8px;background:rgba(20,20,20,.9)}#reference-crop-toggle{right:56px}.reference-source{overflow-wrap:anywhere}.reference-details p{color:#b6b6b6;line-height:1.6}.reference-details h3{margin-top:14px;font-size:13px}.reference-notice{font-size:12px;color:#9e9e9e;line-height:1.55}.reference-load-error{color:#ffb3b3;padding:20px;text-align:center}.reference-display-controls{min-height:38px;display:flex;align-items:center;justify-content:center;gap:6px;padding:4px 12px;background:#000;color:#aaa;font-size:11px;flex-wrap:wrap}.reference-display-controls button{min-height:28px;padding:2px 9px;font-size:11px;border-radius:6px;background:#171717}.reference-display-controls button.on{background:#d8d8d8;color:#111;border-color:#fff}.reference-image-viewport{cursor:ns-resize}@media(max-width:720px){#page-quiz{display:grid;height:calc(100dvh - var(--reference-header-height));grid-template-columns:190px minmax(0,1fr) 0;padding:0;overflow:hidden}#page-quiz.right-collapsed{grid-template-columns:190px minmax(0,1fr) 0}#page-quiz.left-collapsed{grid-template-columns:0 minmax(0,1fr) 0}#page-quiz .reference-panel{padding:10px 8px}#page-quiz .reference-details{display:none}#page-quiz.right-collapsed .reference-details{display:none}.reference-stage{padding:38px 2px}.reference-slider-wrap{width:28px}.reference-slider-wrap input{height:min(58vh,480px)}.reference-overlay{font-size:10px;padding:4px}.reference-overlay-top,.reference-overlay-bottom{left:4px;right:4px}.reference-floating{top:4px}.reference-overlay-top{top:4px}.reference-overlay-bottom{bottom:4px}.reference-collapse-toggle{top:4px;right:4px;min-width:34px}#reference-crop-toggle{right:44px}}
+/* Learning page styles stay scoped so existing pages keep their layout. */
+body:has(#page-learning:not([hidden])) .topsearch{display:none}
+body:has(#page-learning:not([hidden])) header{grid-template-columns:auto minmax(0,1fr);gap:20px}
+body:has(#page-learning:not([hidden])) .topnav{grid-column:2;justify-self:end;gap:14px;flex-wrap:wrap}
+body:has(#page-learning:not([hidden])) .navlink{min-height:44px}
+#page-learning{grid-template-columns:minmax(220px,.82fr) minmax(0,1.45fr) minmax(240px,.9fr);align-items:start;min-height:calc(100dvh - 108px)}
+#page-learning .learning-left,#page-learning .learning-center,#page-learning .learning-right{min-width:0;padding:22px 18px}
+#page-learning .learning-left{border-right:1px solid var(--line);padding-left:0}
+#page-learning .learning-center{display:flex;flex-direction:column;gap:14px}
+#page-learning .learning-right{border-left:1px solid var(--line);padding-right:0;display:flex;flex-direction:column;gap:14px}
+#page-learning h1{font-size:21px;line-height:1.4;margin:3px 0 8px}
+#page-learning h2{font-size:18px;margin:0}
+#page-learning h3{font-size:16px;margin:0 0 8px}
+#page-learning .learning-kicker,#page-learning .learning-muted{color:var(--muted);font-size:13px}
+#page-learning .learning-step-progress{display:block;width:100%;height:10px;margin:8px 0;accent-color:var(--accent)}
+#page-learning .learning-step-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+#page-learning .learning-step{display:flex;align-items:center;gap:10px;min-height:56px;width:100%;padding:8px 10px;text-align:left;background:var(--panel);border-color:var(--line)}
+#page-learning .learning-step[aria-current="step"]{border-color:var(--accent);color:var(--text);background:var(--panel-soft)}
+#page-learning .learning-step-number{display:grid;place-items:center;width:28px;height:28px;flex:none;border:1px solid var(--line);border-radius:50%;color:var(--accent)}
+#page-learning .learning-step-copy{display:flex;flex-direction:column;min-width:0}
+#page-learning .learning-step-copy small,#page-learning .learning-option small{color:var(--muted);font-size:12px;line-height:1.4}
+#page-learning .learning-step-done{margin-left:auto;color:var(--accent);font-size:11px;white-space:nowrap}
+#page-learning .learning-continue{min-height:44px;align-self:flex-end;margin-top:16px}
+#page-learning .learning-lead,#page-learning .learning-note{color:var(--muted);line-height:1.65}
+#page-learning .learning-objectives{padding-left:22px;display:grid;gap:12px}
+#page-learning .learning-scenario{font-size:17px;line-height:1.7}
+#page-learning .learning-question-count{color:var(--accent);font-weight:700}
+#page-learning .learning-options{display:flex;flex-direction:column;gap:8px;border-color:var(--line)}
+#page-learning .learning-options legend{font-size:14px;color:var(--text)}
+#page-learning .learning-option{display:flex;align-items:flex-start;gap:12px;min-height:56px;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--panel-soft);cursor:pointer}
+#page-learning .learning-option input{width:20px;height:20px;flex:none;margin:3px 0 0;accent-color:var(--accent)}
+#page-learning .learning-option-copy{display:flex;flex-direction:column;gap:2px}
+#page-learning .learning-question-controls{display:flex;justify-content:space-between;gap:10px}
+#page-learning .learning-question-controls button,#page-learning .learning-card-link,#page-learning .learning-review-item button{min-height:44px}
+#page-learning .learning-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#page-learning .learning-modality-card{scroll-margin:18px;min-width:0}
+#page-learning .learning-card-row{line-height:1.55}
+#page-learning .learning-card-row strong{color:var(--text)}
+#page-learning .learning-feedback-card{background:var(--panel-soft)}
+#page-learning .learning-feedback-card p{line-height:1.65}
+#page-learning .learning-result{font-weight:700;color:var(--text)}
+#page-learning .learning-card-link{width:100%;margin-top:10px}
+#page-learning .learning-review-status{display:inline-flex;align-self:flex-start;min-height:32px;align-items:center;padding:4px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:13px}
+#page-learning .learning-review-status[data-status="pending-instructor"]{border-color:var(--accent);color:var(--accent)}
+#page-learning .learning-source{overflow-wrap:anywhere;color:var(--muted);font-size:13px;line-height:1.55}
+#page-learning .learning-review-score{font-weight:700;color:var(--accent)}
+#page-learning .learning-review-list{display:flex;flex-direction:column;gap:8px;padding-left:24px}
+#page-learning .learning-review-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+#page-learning .learning-review-item button{flex:none}
+@media(max-width:1100px){#page-learning{grid-template-columns:minmax(220px,.75fr) minmax(0,1.25fr);padding:0 18px}#page-learning .learning-left{padding-left:0}#page-learning .learning-center{padding-right:0}#page-learning .learning-right{grid-column:1/-1;border-left:0;border-top:1px solid var(--line);padding:18px 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){body:has(#page-learning:not([hidden])) header{grid-template-columns:1fr;gap:8px;padding:10px 14px}body:has(#page-learning:not([hidden])) .topnav{grid-column:1;grid-row:2;justify-self:start;max-width:100%;font-size:12px;gap:12px;flex-wrap:nowrap;overflow-x:auto}#page-learning{display:flex;flex-direction:column;gap:0;padding:0 14px}#page-learning .learning-left,#page-learning .learning-center,#page-learning .learning-right{width:100%;padding:16px 0;border:0}#page-learning .learning-left{border-bottom:1px solid var(--line)}#page-learning .learning-step-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}#page-learning .learning-center{order:0}#page-learning .learning-right{order:1;display:flex;border-top:1px solid var(--line)}#page-learning .learning-card-grid{grid-template-columns:1fr}#page-learning .learning-review-item{align-items:flex-start;flex-direction:column}#page-learning .learning-review-item button{width:100%}}
 </style>
 <style>
 #page-quiz .reference-stage{padding:0 12px 4px}
@@ -109,7 +160,37 @@ body:has(.navlink.active[data-page="bmd"]) .bmd-header-note{display:block;paddin
 </style>
 </head>
 <body>
-<header><div class="brand">radio<span>tomy</span></div><input id="q" class="topsearch" type="search" placeholder="ค้นหาโครงสร้าง เช่น Aorta, Femur" aria-label="ค้นหาชื่อชิ้นส่วน"><nav class="topnav" aria-label="เมนูหลัก"><button class="navlink active" data-page="atlas" aria-current="page">Atlas</button><button class="navlink" data-page="quiz">ภาพอ้างอิงจริง</button><button class="navlink" data-page="positioning">ท่าถ่ายภาพ</button><button class="navlink" data-page="bmd">เครื่องคำนวณ BMD</button></nav><div class="bmd-header-note">ข้อมูลจำลองเพื่อการเรียนรู้ · ไม่ใช้วินิจฉัย</div></header>
+<header><div class="brand">radio<span>tomy</span></div><input id="q" class="topsearch" type="search" placeholder="ค้นหาโครงสร้าง เช่น Aorta, Femur" aria-label="ค้นหาชื่อชิ้นส่วน"><nav class="topnav" aria-label="เมนูหลัก"><button class="navlink" data-page="learning">เรียนรู้งานรังสี</button><button class="navlink active" data-page="atlas" aria-current="page">Atlas</button><button class="navlink" data-page="quiz">ภาพอ้างอิงจริง</button><button class="navlink" data-page="positioning">ท่าถ่ายภาพ</button><button class="navlink" data-page="bmd">เครื่องคำนวณ BMD</button></nav><div class="bmd-header-note">ข้อมูลจำลองเพื่อการเรียนรู้ · ไม่ใช้วินิจฉัย</div></header>
+<main id="page-learning" class="tool-page" hidden>
+  <aside class="learning-left" aria-label="เส้นทางบทเรียน">
+    <p class="learning-kicker">เรียนรู้งานรังสี · ปี 1</p>
+    <h1>บทที่ 1:<br>เลือก modality ให้เป็น</h1>
+    <p id="learning-step-text" class="learning-muted">ขั้นที่ 1 จาก 4</p>
+    <progress id="learning-step-progress" class="learning-step-progress" max="4" value="1" aria-label="ความคืบหน้าของขั้นตอนบทเรียน"></progress>
+    <p id="learning-progress-detail" class="learning-muted">กำลังโหลดความคืบหน้า…</p>
+    <nav id="learning-steps" class="learning-step-list" aria-label="ขั้นตอนในบทเรียน"></nav>
+  </aside>
+  <section class="learning-center" aria-label="เนื้อหาบทเรียน">
+    <p id="learning-question-text" class="learning-question-count" hidden>คำถาม</p>
+    <div id="learning-content" aria-live="polite"><p>กำลังโหลดบทเรียน…</p></div>
+    <div class="learning-question-controls">
+      <button id="learning-previous" type="button" hidden>ข้อก่อนหน้า</button>
+      <button id="learning-next" class="primary" type="button" hidden>ข้อถัดไป</button>
+    </div>
+  </section>
+  <aside class="learning-right" aria-label="feedback และแหล่งข้อมูล">
+    <section class="card learning-feedback-card">
+      <h2>ผลและเหตุผล</h2>
+      <div id="learning-feedback" aria-live="polite"><p>เลือกคำตอบเพื่อดูผลและเหตุผลประกอบ</p></div>
+      <button id="learning-card-link" class="learning-card-link" type="button" hidden>เปิดการ์ดสรุป</button>
+    </section>
+    <section class="card">
+      <h2>สถานะเนื้อหา</h2>
+      <p id="learning-review-status" class="learning-review-status" data-status="pending-instructor">รอผู้สอนทวน</p>
+      <p id="learning-source" class="learning-source">เนื้อหาบทเรียนเรียบเรียงใหม่จากหลักการทั่วไป</p>
+    </section>
+  </aside>
+</main>
 <main id="page-atlas">
 <aside>
 <fieldset><legend>โมเดลร่างกาย</legend>
@@ -264,9 +345,8 @@ body:has(.navlink.active[data-page="bmd"]) .bmd-header-note{display:block;paddin
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <script type="module" src="main.js"></script>
 <script type="module" src="tools.js"></script>
+<script type="module" src="lesson.js"></script>
 <script type="module" src="positioning3d.js"></script>
 <script type="module" src="bmd.js"></script>
 </body>
 </html>
-
-

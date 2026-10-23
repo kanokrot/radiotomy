@@ -54,8 +54,8 @@ let contrastPreset = 'normal';
 let renderSequence = 0;
 
 const byId = id => document.getElementById(id);
-const pageIds = ['atlas', 'quiz', 'positioning', 'bmd'];
-const pageRoutes = { atlas: '/atlas', quiz: '/reference', positioning: '/positioning', bmd: '/bmd' };
+const pageIds = ['learning', 'atlas', 'quiz', 'positioning', 'bmd'];
+const pageRoutes = { learning: '/learn', atlas: '/atlas', quiz: '/reference', positioning: '/positioning', bmd: '/bmd' };
 const routePages = new Map(Object.entries(pageRoutes).map(([page, route]) => [route, page]));
 routePages.set('/', 'atlas');
 routePages.set('/quiz', 'quiz');
