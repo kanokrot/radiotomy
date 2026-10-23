@@ -1,0 +1,8 @@
+.npm-cache/
+incoming/
+artifacts/
+node_modules/
+__pycache__/
+*.pyc
+.env
+models/

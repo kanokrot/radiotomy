@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RADIOTOMY</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080F18;--panel:#101A25;--panel-soft:#14212E;--text:#E7EEF5;--muted:#9AA8B7;--line:#263544;--accent:#38C8BE;--onaccent:#071411}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Sarabun',system-ui,sans-serif;line-height:1.5}
+a{color:var(--accent)}
+header{min-height:74px;padding:12px 24px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:auto minmax(220px,1fr) auto;align-items:center;gap:28px;background:#0A121C;position:sticky;top:0;z-index:5}
+.brand{font-size:22px;font-weight:700;letter-spacing:-.04em;white-space:nowrap}.brand span{color:var(--accent)}
+.topsearch{width:min(100%,650px);justify-self:center;background:#111C28!important;border-color:#293847!important}
+.topnav{display:flex;align-items:center;gap:20px;color:var(--muted);font-size:14px}.topnav .active{color:var(--accent);font-weight:700}
+.navlink{min-height:34px;padding:5px 0;border:0;background:transparent;color:var(--muted);white-space:nowrap}.navlink.active{color:var(--accent);font-weight:700}
+main{display:grid;grid-template-columns:284px minmax(360px,1fr) 340px;gap:0;min-height:calc(100vh - 108px);padding:0 24px}
+[hidden]{display:none!important}
+aside{padding:22px 18px 22px 0;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:16px}
+.right{padding:22px 0 22px 22px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:16px}
+.center{min-width:0;display:flex;flex-direction:column;gap:12px;padding:18px 20px}
+.card,fieldset{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;margin:0}
+fieldset{display:flex;flex-direction:column;gap:12px}
+legend{font-size:13px;color:var(--muted);padding:0 6px}
+label{display:flex;align-items:center;gap:10px;font-size:15px}
+.sw{width:22px;height:6px;border-radius:3px;flex:none;outline:1px solid var(--line)}
+#layers{display:flex;flex-direction:column;gap:5px}#layers label{min-height:40px;padding:6px 8px;background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;font-size:14px;line-height:1.2;white-space:nowrap}#layers label:has(input:checked){color:var(--text)}#layers label input{order:3;margin-left:auto;accent-color:var(--accent)}#layers label .sw{width:12px;height:12px;border:0;border-radius:50%;outline:1px solid #ffffff33}#layers label .layer-count{margin-left:4px;color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}#layers legend{margin-bottom:4px}
+#modelSelect{width:100%}
+#page-atlas{min-height:calc(100dvh - 108px);grid-template-columns:270px minmax(420px,1fr) 300px;grid-template-rows:minmax(0,1fr)}#page-atlas aside,#page-atlas .right{overflow:auto}#page-atlas .center{min-height:calc(100dvh - 120px);padding:12px 16px}#view{height:min(78vh,900px);min-height:520px;flex:1;border-radius:12px;overflow:hidden;background:radial-gradient(ellipse at 50% 38%,#192531,#0c1118);border:1px solid var(--line);touch-action:none;position:relative}
+#view canvas{display:block;width:100%;height:100%}
+#msg{position:absolute;inset:0;display:grid;place-items:center;color:#cbd5df;padding:24px;text-align:center}.load-status{max-width:420px}.load-status progress{display:block;width:min(340px,70vw);height:12px;margin:12px auto 0;accent-color:var(--accent)}
+.bar{display:flex;flex-wrap:wrap;gap:8px}
+button,input[type=search],select{font:inherit;font-size:14px;min-height:44px;padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--text)}
+button{cursor:pointer}
+button.on{background:var(--accent);color:var(--onaccent);border-color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+h3{margin:0;font-size:17px}p{margin:4px 0 0;font-size:14px}
+.hint{font-size:13px;color:var(--muted)}
+pre{white-space:pre-wrap;font-size:12px;max-height:160px;overflow:auto}
+footer{padding:10px 24px 18px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+.tool-page h1{font-size:22px;line-height:1.35;margin:5px 0 14px}.tool-page h2{font-size:17px;margin:0 0 10px}.tool-page h3{margin:12px 0 8px}.tool-left{padding:24px 18px 24px 0;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:14px}.tool-left .card,.quiz-right .card,.position-right .card{background:var(--panel-soft)}
+.quiz-center,.position-center,.bmd-center{min-width:0;padding:24px;display:flex;flex-direction:column;gap:14px}.quiz-center{border-right:1px solid var(--line)}.quiz-center h1{font-size:21px;margin:0 0 2px}.quiz-center h1 span{color:var(--accent)}.quiz-right,.position-right{padding:24px 0 24px 20px;display:flex;flex-direction:column;gap:14px}.quiz-right p,.position-right p{color:var(--muted);line-height:1.65}.progress-dots{display:flex;gap:6px;margin:12px 0}.progress-dots i{height:7px;border-radius:6px;background:#263544;flex:1}.progress-dots i.done{background:var(--accent)}.check-list{display:flex;flex-direction:column;gap:12px}.check-list label{font-size:13px}.study-list{display:flex;flex-direction:column;gap:5px}.study-choice{border:0;background:transparent;text-align:left;color:var(--muted);padding:7px 9px;min-height:36px}.study-choice.on{background:var(--panel-soft);color:var(--accent);border-radius:8px}
+.ct-image{position:relative;min-height:440px;flex:1;background:#020406;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:grid;place-items:center}.ct-image svg{width:min(100%,580px);height:auto;max-height:100%}.ct-image .side-label{position:absolute;top:10px;color:#aab6c3;font-size:14px}.ct-image .side-label.left{left:15px}.ct-image .side-label.right{right:15px}.ct-image .window-label{position:absolute;left:15px;bottom:12px;color:#aab6c3;font-variant-numeric:tabular-nums}.target-point{cursor:pointer;fill:#dbe2e9;stroke:#101820;stroke-width:3}.target-point:hover,.target-point:focus{stroke:var(--accent);stroke-width:6}.target-point.chosen{stroke:var(--accent);stroke-width:7}.target-point.wrong{fill:#f05a60}.window-controls{align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px;color:var(--muted);font-size:12px}.window-controls label{font-size:12px}.window-controls input{width:92px}.window-preset{min-height:36px;padding:5px 10px}.window-preset.on{border-color:var(--accent);color:var(--accent)}.result-pill{align-self:flex-start;padding:5px 14px;border:1px solid #285643;border-radius:99px;color:#43d391;font-weight:700}.result-pill.bad{border-color:#744044;color:#ff777d}.page-actions{margin-top:auto}.page-actions button{flex:1}.primary{background:var(--accent)!important;border-color:var(--accent)!important;color:#06201d!important;font-weight:700}.position-heading{align-items:center;gap:16px}.position-heading h1{margin:0}.position-heading button{min-width:48px}.position-tabs button{flex:1;border-radius:99px}.position-diagram{min-height:340px;display:grid;place-items:center;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px}.position-diagram svg{max-height:420px;width:min(100%,760px)}.position-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.position-stats .card strong{display:block;font-size:19px;margin-top:5px}.position-center ul{margin:8px 0 0;padding:0;list-style:none}.position-center li{padding:8px 0;border-bottom:1px solid var(--line)}.position-center li::before{content:'✓';color:#43d391;margin-right:10px}.bmd-page .tool-left{gap:14px}.bmd-page .bmd-center{border-right:1px solid var(--line);justify-content:flex-start;padding-top:38px}.number-field{display:flex;flex-direction:column;align-items:stretch;gap:6px;color:var(--muted)}.number-field input{width:100%;font:inherit;font-size:17px;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:9px;padding:13px}.full-width{width:100%}.bmd-result{display:flex;align-items:flex-end;gap:24px;margin:6px 0 20px}.bmd-result strong{font-size:88px;line-height:.95;color:#f5b942;font-variant-numeric:tabular-nums}.bmd-result h2{font-size:26px;margin:0}.bmd-result p{color:var(--muted)}.score-scale{margin:15px 0 34px}.scale-bar{height:28px;border-radius:20px;position:relative;background:linear-gradient(90deg,#f0525b 0 25%,#f5b942 25% 50%,#31cc98 50% 100%)}.scale-bar i{position:absolute;top:35px;left:38%;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:14px solid white;transform:translateX(-50%)}.scale-values{display:flex;justify-content:space-between;text-align:center;color:var(--muted);font-size:12px;margin-top:30px}.formula-card{padding:20px}.formula-card p{font-size:21px;margin:12px 0}.formula-card strong{font-size:18px;color:var(--accent)}.spine-diagram{height:430px;background:#030609;border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:space-evenly;position:relative}.spine-diagram::before{content:'L1     L2     L3     L4';position:absolute;left:10%;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;color:var(--muted);letter-spacing:46px}.spine-diagram i{display:block;width:35%;height:58px;background:#bbc3cc;border-radius:14px;z-index:1}.spine-diagram::after{content:'';position:absolute;inset:8% 27%;border:2px dashed var(--accent)}
+.dxa-choices{padding:30px}.dxa-choice-list{display:grid;grid-template-columns:1fr;gap:14px;width:min(100%,520px)}.answer-choice{display:flex;align-items:center;justify-content:space-between;min-height:78px;text-align:left;padding:16px 20px;background:var(--panel-soft);font-size:17px}.answer-choice span{color:var(--muted);font-size:14px}.answer-choice.chosen{border-color:var(--accent);color:var(--accent)}.answer-choice.wrong{border-color:#f05a60;color:#ff777d}
+.spine-diagram[data-site="neck"]::before,.spine-diagram[data-site="hip"]::before{content:none}.spine-diagram:not([data-site="spine"])::after{display:none}.spine-diagram svg{width:85%;height:85%}
+@media(max-width:1100px){main{grid-template-columns:240px minmax(0,1fr)}.right,.quiz-right,.position-right{grid-column:1/-1;border-left:0;border-top:1px solid var(--line);padding:18px 0;display:grid;grid-template-columns:1fr 1fr}.tool-left{border-right:1px solid var(--line)}.topnav{gap:10px}}
+@media(max-width:720px){header{grid-template-columns:1fr;gap:8px;padding:10px 14px}.brand{grid-row:1}.topnav{grid-row:2;grid-column:1;font-size:12px;gap:16px;overflow-x:auto;max-width:100%}.topsearch{grid-row:3;grid-column:1;width:100%}main{display:flex;flex-direction:column;padding:0 14px}aside,.center,.right,.tool-left,.quiz-center,.quiz-right,.position-center,.position-right,.bmd-center{padding:14px 0;border:0}.center{order:-1}#view{height:56vh;min-height:300px}.right,.quiz-right,.position-right{display:flex}.tool-page{display:flex;flex-direction:column}.quiz-center{order:0}.ct-image{min-height:340px}.window-controls{flex-wrap:wrap}.window-controls label{flex:1}.position-stats{grid-template-columns:1fr}.bmd-result strong{font-size:64px}.score-scale{overflow:hidden}.scale-values{font-size:10px}.spine-diagram{height:300px}}
+#page-atlas .anatomy-note{margin:0;padding:8px 10px;border-left:2px solid var(--accent);background:#12202a;color:var(--muted);font-size:12px;line-height:1.45}
+body:has(#page-atlas:not([hidden])) footer{overflow-wrap:anywhere}
+@media(max-width:1100px){#page-atlas .center{min-height:0}#page-atlas #view{height:68vh;min-height:420px}}
+@media(max-width:720px){#page-atlas #view{height:56vh;min-height:340px}#page-atlas aside{order:1}#page-atlas .center{order:0}}
+.ct-image>img{display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain}.reference-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.reference-meta .card{padding:12px}.reference-meta strong{display:block;margin-top:5px;font-size:13px}.reference-controls{align-items:center;justify-content:space-between}.reference-note{line-height:1.6;color:var(--muted)}
+#page-quiz{--reference-header-height:74px;grid-template-columns:280px minmax(0,1fr) 300px;gap:0;padding:0;height:calc(100dvh - var(--reference-header-height));min-height:0;overflow:hidden;background:#000}body.reference-open{overflow:hidden}body.reference-open footer{display:none}#page-quiz .reference-panel{min-width:0;min-height:0;padding:16px;border:0;display:flex;flex-direction:column;gap:12px;overflow:auto;background:#080808}#page-quiz .reference-library{border-right:1px solid #252525}#page-quiz .reference-details{border-left:1px solid #252525}.reference-panel-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.reference-panel-head h2{margin:0;font-size:15px}.reference-panel-head button{min-width:40px;padding:4px 9px}.reference-sex{margin:8px 0 4px;color:#aab6c3;font-size:12px;font-weight:700}.reference-options{display:flex;flex-direction:column;gap:3px}.reference-choice{border:0;background:transparent;text-align:left;color:#aab6c3;padding:8px 10px;min-height:38px;font-size:13px}.reference-choice:hover,.reference-choice.on{background:#171717;color:var(--accent);border-radius:6px}.reference-main{position:relative;min-width:0;min-height:0;display:flex;flex-direction:column;background:#000}.reference-stage{position:relative;min-height:0;min-width:0;flex:1;display:flex;align-items:stretch;justify-content:center;gap:10px;padding:42px 12px;background:#000;overflow:hidden}.reference-image-viewport{position:relative;min-width:0;min-height:0;flex:1;display:grid;place-items:center;overflow:hidden;background:#000;touch-action:none;user-select:none}.reference-image-viewport canvas{display:block;width:100%;height:100%;object-fit:contain;user-select:none;pointer-events:none}.reference-overlay{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;padding:5px 8px;background:rgba(0,0,0,.68);color:#eee;font-size:12px;pointer-events:none}.reference-overlay-top{left:14px;top:8px;right:14px;justify-content:space-between}.reference-overlay-bottom{left:14px;bottom:8px;right:14px;justify-content:space-between;color:#c5c5c5}.reference-count{font-variant-numeric:tabular-nums;font-weight:700}.reference-orientation{font-variant-numeric:tabular-nums;color:#dedede}.reference-slider-wrap{width:36px;flex:none;display:flex;justify-content:center;align-items:center}.reference-slider-wrap input{height:min(66vh,560px);width:24px;writing-mode:vertical-lr;direction:rtl;accent-color:var(--accent);touch-action:none}.reference-floating{position:absolute;z-index:4;top:8px;display:none;min-width:40px;padding:3px 9px;background:rgba(20,20,20,.9)}#page-quiz.left-collapsed{grid-template-columns:0 minmax(0,1fr) 300px}#page-quiz.right-collapsed{grid-template-columns:280px minmax(0,1fr) 0}#page-quiz.left-collapsed .reference-library,#page-quiz.right-collapsed .reference-details{display:none}#page-quiz.left-collapsed #restore-left-panel,#page-quiz.right-collapsed #restore-right-panel{display:block}#restore-left-panel{left:8px}#restore-right-panel{right:8px}.reference-collapse-toggle{position:absolute;z-index:4;top:8px;right:12px;min-width:38px;min-height:34px;padding:2px 8px;background:rgba(20,20,20,.9)}#reference-crop-toggle{right:56px}.reference-source{overflow-wrap:anywhere}.reference-details p{color:#b6b6b6;line-height:1.6}.reference-details h3{margin-top:14px;font-size:13px}.reference-notice{font-size:12px;color:#9e9e9e;line-height:1.55}.reference-load-error{color:#ffb3b3;padding:20px;text-align:center}.reference-display-controls{min-height:38px;display:flex;align-items:center;justify-content:center;gap:6px;padding:4px 12px;background:#000;color:#aaa;font-size:11px;flex-wrap:wrap}.reference-display-controls button{min-height:28px;padding:2px 9px;font-size:11px;border-radius:6px;background:#171717}.reference-display-controls button.on{background:#d8d8d8;color:#111;border-color:#fff}.reference-image-viewport{cursor:ns-resize}@media(max-width:720px){#page-quiz{display:grid;height:calc(100dvh - var(--reference-header-height));grid-template-columns:190px minmax(0,1fr) 0;padding:0;overflow:hidden}#page-quiz.right-collapsed{grid-template-columns:190px minmax(0,1fr) 0}#page-quiz.left-collapsed{grid-template-columns:0 minmax(0,1fr) 0}#page-quiz .reference-panel{padding:10px 8px}#page-quiz .reference-details{display:none}#page-quiz.right-collapsed .reference-details{display:none}.reference-stage{padding:38px 2px}.reference-slider-wrap{width:28px}.reference-slider-wrap input{height:min(58vh,480px)}.reference-overlay{font-size:10px;padding:4px}.reference-overlay-top,.reference-overlay-bottom{left:4px;right:4px}.reference-floating{top:4px}.reference-overlay-top{top:4px}.reference-overlay-bottom{bottom:4px}.reference-collapse-toggle{top:4px;right:4px;min-width:34px}#reference-crop-toggle{right:44px}}
+</style>
+<style>
+#page-quiz .reference-stage{padding:0 12px 4px}
+#page-quiz .reference-image-viewport.crop-cryo{position:relative;left:1.3%;top:-2.5%;flex:0 1 auto;width:min(46%,calc((100dvh - var(--reference-header-height))*.46));height:56.5%;align-self:center;aspect-ratio:auto}
+#page-quiz .reference-image-viewport.crop-cryo canvas{position:absolute;left:50%;top:50%;width:calc(100dvh - var(--reference-header-height));height:auto;max-width:none;max-height:none;transform:translate(-50%,-50%) scale(2.1);object-fit:contain}
+#page-quiz .reference-library{grid-column:1}#page-quiz .reference-main{grid-column:2}#page-quiz .reference-details{grid-column:3}
+#page-quiz.left-collapsed.right-collapsed{grid-template-columns:0 minmax(0,1fr) 0}
+#page-quiz .reference-overlay-top{left:54px;right:54px}
+#toggle-left-panel{left:12px;right:auto}
+#page-quiz.left-collapsed #toggle-left-panel,#page-quiz.right-collapsed #toggle-right-panel{display:none}
+@media(max-width:720px){#page-quiz .reference-stage{padding:0 2px}#page-quiz .reference-overlay-top{left:44px;right:44px}#page-quiz .reference-details{position:fixed;z-index:6;top:var(--reference-header-height);right:0;bottom:0;width:min(320px,85vw);display:flex;box-shadow:-14px 0 35px #000;background:#080808}#page-quiz.right-collapsed .reference-details{display:none}#toggle-left-panel{left:4px;right:auto}#page-quiz .reference-slider-wrap input{height:min(66vh,560px)}#page-quiz .reference-image-viewport.crop-cryo{width:min(75%,calc((100dvh - var(--reference-header-height))*.5))}#page-quiz .reference-image-viewport.crop-cryo canvas{width:calc(100dvh - var(--reference-header-height));transform:translate(-50%,-50%) scale(1.7)}}
+
+#page-quiz [hidden],#page-positioning [hidden]{display:none!important}
+.position-figure{width:100%;margin:0;display:flex;flex-direction:column;align-items:center;gap:10px}.position-figure img{display:block;max-width:100%;max-height:52vh;object-fit:contain;border-radius:8px;background:#080b0e}.position-figure figcaption{max-width:760px;color:var(--muted);font-size:12px;line-height:1.55;text-align:center}.position-figure figcaption a{color:var(--accent)}
+.position-image-fallback{display:flex;align-items:center;justify-content:center;gap:12px;min-height:180px;padding:20px;text-align:center;color:var(--muted)}.position-image-fallback[hidden]{display:none!important}
+.position-3d{position:relative;min-height:420px;overflow:hidden;padding:0;background:radial-gradient(ellipse at 50% 42%,#1b2935,#080d13)}.position-3d canvas{display:block;width:100%;height:100%;min-height:420px;touch-action:none}.position-3d-legend{position:absolute;left:12px;right:12px;bottom:10px;display:flex;justify-content:space-between;gap:10px;pointer-events:none}.position-3d-legend span{padding:5px 9px;border:1px solid #34404a;border-radius:7px;background:#081019e8;color:#d6dee6;font-size:12px}.position-3d-note{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
+#page-quiz .cryo-caption{flex:none;min-height:24px;box-sizing:border-box;padding:4px 58px;color:#ddd;background:#080808;font-size:11px;line-height:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#page-quiz.cryo-mode .reference-stage{flex:1;min-height:0;padding:0 8px 2px;gap:0}
+#page-quiz.cryo-mode .reference-image-viewport.crop-cryo{left:auto;top:auto;flex:1 1 auto;width:auto;height:auto;min-height:0;align-self:stretch;aspect-ratio:auto}
+#page-quiz.cryo-mode .reference-image-viewport.crop-cryo canvas{position:static;width:auto;height:auto;max-width:100%;max-height:100%;transform:none;object-fit:contain}
+#page-quiz.cryo-mode .reference-overlay{display:none}
+#page-quiz .cryo-picker-bar{height:74px;flex:none;display:flex;align-items:center;justify-content:center;gap:10px;padding:4px 8px;background:#050505}
+#page-quiz .cryo-picker-bar>button{width:34px;height:34px;padding:0;font-size:21px;line-height:1}
+#page-quiz .cryo-picker-bar>button:disabled{opacity:.35;cursor:default}
+#page-quiz .cryo-thumbnails{display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;overflow-x:auto}
+#page-quiz .cryo-thumb{position:relative;flex:none;width:76px;height:58px;padding:2px;border:1px solid #555;border-radius:4px;background:#111;overflow:hidden}
+#page-quiz .cryo-thumb[aria-pressed="true"]{border:2px solid var(--accent);padding:1px}
+#page-quiz .cryo-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+#page-quiz .cryo-thumb span{position:absolute;right:3px;bottom:2px;padding:0 4px;border-radius:2px;background:#000b;color:#fff;font-size:10px}
+@media(max-width:720px){#page-quiz .cryo-caption{padding-left:46px;padding-right:46px;font-size:10px}#page-quiz.cryo-mode .reference-stage{padding:0 2px}#page-quiz .cryo-picker-bar{height:68px;gap:4px;padding:2px}#page-quiz .cryo-picker-bar>button{width:28px;height:32px}#page-quiz .cryo-thumbnails{gap:4px}#page-quiz .cryo-thumb{width:55px;height:48px}}
+</style>
+<style>
+.bmd-page{grid-template-columns:minmax(360px,28vw) minmax(0,1fr);gap:26px;align-items:start;min-height:calc(100dvh - 108px);padding:30px 2.8vw}
+.bmd-page .tool-left{min-width:0;gap:14px;padding:0 20px 18px;border:1px solid var(--line);border-radius:9px;background:#0a1218;overflow:hidden}.bmd-page .bmd-workspace{min-width:0;display:flex;flex-direction:column;gap:26px}.bmd-page .bmd-center{min-width:0;min-height:580px;padding:0 0 16px;border:1px solid var(--line);border-radius:9px;background:#0a1218;overflow:hidden;gap:0}.bmd-page .bmd-bottom{display:grid;grid-template-columns:minmax(240px,310px) minmax(0,1fr);gap:26px;align-items:stretch}.bmd-page .bmd-bottom .spine-diagram{height:316px;min-height:0}.bmd-page .position-right{min-width:0;padding:0;display:flex;flex-direction:column;gap:14px;border:0}
+.bmd-page .tool-left{min-height:580px}.bmd-input-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:8px}.bmd-live{color:#93a5ae;font:12px 'Sarabun',system-ui,sans-serif}.bmd-live::before{content:'';display:inline-block;width:7px;height:7px;margin-right:8px;border-radius:50%;background:#52d3b7}
+.bmd-header-note{display:none}
+.bmd-page .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+body:has(.navlink.active[data-page="bmd"]) header{grid-template-columns:auto minmax(300px,1fr) auto;padding:12px 2vw;background:#070d11}
+body:has(.navlink.active[data-page="bmd"]) .topsearch{display:none}
+body:has(.navlink.active[data-page="bmd"]) .brand::after{content:'BMD WORKSTATION';display:inline-block;margin-left:20px;padding-left:20px;border-left:1px solid var(--line);font:500 14px/1.2 ui-monospace,Consolas,monospace;letter-spacing:.12em;color:#81919a;vertical-align:middle}
+body:has(.navlink.active[data-page="bmd"]) .topnav{grid-column:2;justify-self:center;gap:22px;font-size:15px}
+body:has(.navlink.active[data-page="bmd"]) .bmd-header-note{display:block;padding:6px 12px;border:1px solid #735614;border-radius:5px;color:#e9b425;font-size:13px;white-space:nowrap}
+.bmd-panel-title{padding:11px 14px;border-bottom:1px solid var(--line);margin:0 -20px 2px;color:#8799a3;font:600 13px/1.25 'Sarabun',system-ui,sans-serif;letter-spacing:0}.bmd-panel-code{font:600 13px/1.25 ui-monospace,Consolas,monospace;letter-spacing:.14em}.bmd-panel-th{font-family:'Sarabun',system-ui,sans-serif;font-weight:600;letter-spacing:0}.bmd-center .bmd-panel-title{font-size:13px;margin:0 -1px 0}
+.bmd-page .bmd-status-strip>span{font:700 15px 'Sarabun',system-ui,sans-serif;letter-spacing:0}
+.bmd-panel-title span{color:#52636d}
+.bmd-page .tool-left h1{font-size:18px;margin:0}.bmd-page .tool-left>label:first-of-type{display:grid;grid-template-columns:1fr}.bmd-page .tool-left select{min-height:70px;font-size:15px}.bmd-section-label{font-size:15px;margin:6px 0 -5px}.bmd-page #bmd-sites button{flex:1;padding:9px 10px;font-weight:600}.bmd-page #bmd-sites button:not(.on){background:#0a1218}.bmd-page #bmd-site-note{margin:0;line-height:1.45}.bmd-page .number-field{padding:12px 14px;border:1px solid #1e2b33;border-radius:6px;background:#070c10}.bmd-page .number-field input{border:0;background:transparent;padding:4px 2px 0;font:600 31px/1.2 ui-monospace,Consolas,monospace;color:var(--accent)}.bmd-page .number-field input:focus{outline:none}.bmd-page .number-field:focus-within{border-color:var(--accent)}.bmd-page .number-field input[aria-invalid="true"]{border:1px solid #ff777d}.bmd-page .bmd-input-note{font-size:12px}
+.number-field{display:flex;flex-direction:column;align-items:stretch;gap:6px;color:var(--muted);line-height:1.35}.number-field input,.bmd-page select{width:100%;font:inherit;font-size:17px;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:9px;padding:11px}.number-field .field-error{color:#ff8989;font-size:12px}.number-field .field-error:empty{display:none}.number-field input[aria-invalid="true"]{border-color:#ff777d}
+.bmd-result{display:flex;align-items:center;gap:24px;margin:0;min-height:0}.bmd-result[hidden]{display:none}.bmd-result strong{font:600 clamp(84px,9vw,148px)/.95 ui-monospace,Consolas,monospace;color:#ffc739;font-variant-numeric:tabular-nums;text-shadow:0 0 32px #ffc73926}.bmd-result h2{font-size:26px;margin:0}.bmd-result p{color:var(--muted)}.bmd-status-strip{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 16px;background:#ffc739;color:#261d05;font-weight:700}.bmd-status-strip[data-tone="waiting"]{background:#26333a;color:#d3dde2}.bmd-status-strip[data-tone="normal"]{background:#39c98b;color:#08261b}.bmd-status-strip[data-tone="osteoporosis"]{background:#f17670;color:#32110f}.bmd-status-strip strong{font-size:16px}.bmd-status-strip>span{font:700 15px ui-monospace,Consolas,monospace;letter-spacing:.08em}.bmd-score-row{display:flex;align-items:center;gap:34px;min-height:230px;padding:18px 3%}.bmd-metrics{display:flex;flex-direction:column;gap:8px;color:#92a3ad;font:14px ui-monospace,Consolas,monospace}.bmd-metrics b{font-weight:500;color:#a8b8c1;margin-left:16px}.score-scale{margin:0 2.5% 44px}.score-scale[hidden]{display:none}.scale-bar{height:40px;border-radius:0;position:relative;display:flex;background:#273544}.scale-band{height:100%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:16px;white-space:nowrap}.scale-band:first-child{border-radius:0;background:#522624}.scale-band:nth-child(2){background:#ffc739;color:#261d05}.scale-band:nth-child(3){border-radius:0;background:#124d38}.scale-marker{position:absolute;top:-2px;left:0;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-top:16px solid #ffc739;transform:translateX(-50%);z-index:2}.scale-marker-label{position:absolute;top:-42px;left:0;transform:translateX(-50%);font:700 16px ui-monospace,Consolas,monospace;color:#ffc739;white-space:nowrap}.scale-tick{position:absolute;top:68px;transform:translateX(-50%);font:13px ui-monospace,Consolas,monospace;color:var(--muted);white-space:nowrap}.scale-tick::before{content:'';position:absolute;left:50%;top:-28px;height:28px;border-left:1px solid #91a0a888}.scale-endpoints{display:flex;justify-content:space-between;margin-top:0;color:var(--muted);font:13px ui-monospace,Consolas,monospace}.scale-out-of-range{margin-top:20px;color:#ffcf75;font-size:12px;min-height:18px}.bmd-formula-line{margin-top:auto;padding:15px 16px;border-top:1px solid var(--line);display:flex;gap:14px;flex-wrap:wrap;color:#8fa0aa;font:14px ui-monospace,Consolas,monospace}.bmd-formula-line strong{color:var(--accent);font-weight:500}.bmd-actions{padding:12px 16px 0}.bmd-actions button{flex:0 1 auto!important}.bmd-warnings{color:#ffcf75;font-size:13px;min-height:0}.bmd-page .tool-left>p{line-height:1.55;margin:0}.bmd-age-source{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px}
+.spine-diagram{min-height:320px;background:#030609;border:1px solid var(--line);border-radius:7px;display:grid;place-items:center;padding:10px}.spine-diagram svg{width:100%;height:290px}.spine-diagram svg text{font-family:'Sarabun',sans-serif}.bmd-page .bmd-education-card{position:relative;margin:0;padding:56px 18px 18px;background:#0a1218;line-height:1.6}.bmd-page .bmd-education-card .bmd-panel-title{position:absolute;top:0;left:20px;right:20px}.bmd-page .bmd-education-card p{line-height:1.6}.bmd-page .bmd-education-card p:first-of-type{font-weight:600}.bmd-page .bmd-education-card p+p{margin-top:12px}.bmd-page .spine-diagram::before,.bmd-page .spine-diagram::after{content:none;display:none}.bmd-page select{font-size:14px;padding:10px}
+@media(max-width:1100px){.bmd-page{grid-template-columns:minmax(250px,.75fr) minmax(0,1.25fr);gap:18px;padding:22px}.bmd-page .bmd-bottom{grid-template-columns:minmax(200px,.7fr) minmax(0,1.3fr);gap:18px}.bmd-page .bmd-score-row{min-height:190px}.bmd-page .bmd-result strong{font-size:82px}}
+@media(max-width:720px){body:has(.navlink.active[data-page="bmd"]) header{grid-template-columns:1fr;gap:8px;padding:10px 14px}.bmd-header-note{justify-self:start}body:has(.navlink.active[data-page="bmd"]) .brand::after{margin-left:9px;padding-left:9px;font-size:11px}body:has(.navlink.active[data-page="bmd"]) .topnav{grid-column:1;justify-self:start;max-width:100%;font-size:12px;gap:12px}.bmd-page{display:flex;flex-direction:column;gap:16px;padding:16px 14px}.bmd-page .tool-left,.bmd-page .bmd-workspace{width:100%}.bmd-page .bmd-bottom{grid-template-columns:1fr}.bmd-page .bmd-bottom .spine-diagram{height:240px}.bmd-page .bmd-center{min-height:520px}.bmd-page .bmd-score-row{min-height:150px;padding:14px;gap:15px}.bmd-page .bmd-result strong{font-size:64px}.bmd-page .bmd-metrics{font-size:11px}.bmd-status-strip{align-items:flex-start;flex-direction:column}.bmd-status-strip>span{font-size:12px}.bmd-page .scale-band{font-size:11px}.bmd-page .scale-endpoints{font-size:10px}}
+</style>
+</head>
+<body>
+<header><div class="brand">radio<span>tomy</span></div><input id="q" class="topsearch" type="search" placeholder="ค้นหาโครงสร้าง เช่น Aorta, Femur" aria-label="ค้นหาชื่อชิ้นส่วน"><nav class="topnav" aria-label="เมนูหลัก"><button class="navlink active" data-page="atlas" aria-current="page">Atlas</button><button class="navlink" data-page="quiz">ภาพอ้างอิงจริง</button><button class="navlink" data-page="positioning">ท่าถ่ายภาพ</button><button class="navlink" data-page="bmd">เครื่องคำนวณ BMD</button></nav><div class="bmd-header-note">ข้อมูลจำลองเพื่อการเรียนรู้ · ไม่ใช้วินิจฉัย</div></header>
+<main id="page-atlas">
+<aside>
+<fieldset><legend>โมเดลร่างกาย</legend>
+<label for="modelSelect">เลือกโมเดล</label><select id="modelSelect" aria-label="เลือกโมเดลร่างกาย" style="font:inherit;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text)"><option value="male">ร่างกายชาย</option><option value="female">ร่างกายหญิง</option></select><p class="hint" id="model-data-note">Male: BodyParts3D | Female: HuBMAP/HRA. Separate datasets and detail levels; the female model has fewer vessels.</p>
+</fieldset>
+<fieldset id="layers"><legend>เลเยอร์</legend></fieldset>
+<fieldset><legend>การแสดงผล</legend>
+<label style="flex-direction:column;align-items:stretch;gap:6px">ความทึบแสงของผิวหนัง <input id="skinOpacity" type="range" min="0" max="0.75" step="0.05" value="0.35"><span id="skinOpacityValue">ทึบ 35% · 0% คือใส</span></label>
+<label style="flex-direction:column;align-items:stretch;gap:6px">ความโปร่งใสของชิ้นที่ไม่ได้เลือก<input id="dim" type="range" min="0.05" max="1" step="0.05" value="0.25"></label>
+</fieldset>
+<p class="anatomy-note">สีบางส่วนกำหนดเพื่อช่วยแยกโครงสร้าง ไม่ใช่สีจากภาพถ่ายจริง</p>
+<p class="hint">ลากเพื่อหมุน · ล้อเมาส์หรือบีบนิ้วเพื่อซูม · คลิกชิ้นส่วนเพื่อเลือก</p>
+</aside>
+<section class="center">
+<div id="view" role="img" aria-label="โมเดลกายวิภาค 3 มิติ หมุนและเลือกชิ้นส่วนได้"><div id="msg">กำลังโหลดโมเดล…</div></div>
+<div class="bar"><button id="iso" aria-pressed="false">แสดงเฉพาะที่เลือก</button><button id="clr">ล้างการเลือก</button><button id="auto" aria-pressed="false">หมุนอัตโนมัติ</button></div>
+</section>
+<div class="right">
+<div class="card"><div class="hint">ที่เลือก</div><h3 id="iname">คลิกที่ชิ้นส่วนในโมเดล</h3><p id="idesc"></p></div>
+<div class="card"><div class="hint">ผลการค้นหา</div><p class="hint" id="qn">พิมพ์ชื่อชิ้นส่วนในช่องค้นหาด้านบน</p></div>
+<details class="card" id="devUnmatched" hidden><summary>สำหรับผู้พัฒนา · ชิ้นส่วนที่ยังไม่จัดกลุ่ม (<span id="un">0</span>)</summary><label><input id="showPregnancy" type="checkbox"> Show pregnancy meshes (developer only)</label><p class="hint">Hidden from the learner view.</p><pre id="unl"></pre></details>
+</div>
+</main>
+<main id="page-quiz" class="tool-page reference-page" hidden>
+  <aside class="reference-panel reference-library" aria-label="รายการชุดภาพ">
+    <div class="reference-panel-head"><h2>ชุดภาพ NLM</h2><button id="close-left-panel" aria-label="ยุบรายการชุดภาพ">‹</button></div>
+    <div class="reference-sex">ชาย</div><div class="reference-options">
+      <button class="reference-choice on" data-reference="ct-male">CT axial · ทั้งร่างกาย</button>
+      <button class="reference-choice" data-reference="mri-head">MRI T1 · ศีรษะ</button>
+      <button class="reference-choice" data-reference="anatomy-male">Cryosection · ภาพตัวอย่าง</button>
+    </div>
+    <div class="reference-sex">หญิง</div><div class="reference-options">
+      <button class="reference-choice" data-reference="ct-female">CT axial · ทั้งร่างกาย</button>
+      <button class="reference-choice" data-reference="anatomy-female">Cryosection · ภาพตัวอย่าง</button>
+    </div>
+  </aside>
+  <section class="reference-main" aria-label="ตัวแสดงภาพ CT และภาพตัด">
+    <button id="restore-left-panel" class="reference-floating" aria-label="ขยายรายการชุดภาพ">☰</button>
+    <button id="restore-right-panel" class="reference-floating" aria-label="ขยายข้อมูลชุดภาพ">ⓘ</button>
+    <div id="cryo-caption" class="cryo-caption" hidden></div>
+    <div class="reference-stage">
+      <div id="ct-image" class="reference-image-viewport" role="group" aria-label="ภาพ CT axial จาก NLM Visible Human Project" tabindex="0">
+        <canvas id="reference-canvas" role="img" aria-label="ภาพ CT axial จาก NLM Visible Human Project"></canvas>
+        <div class="reference-overlay reference-overlay-top"><span id="slice-count" class="reference-count">Slice 1 / 1</span><span id="reference-title">Visible Human Male · CT axial</span></div>
+        <div class="reference-overlay reference-overlay-bottom"><span id="reference-file">NLM Visible Human Project</span><span id="reference-orientation" class="reference-orientation">R/L: ยังไม่ยืนยันทิศ</span></div>
+      </div>
+      <div class="reference-slider-wrap"><input id="slice-range" type="range" min="0" max="0" value="0" step="1" aria-label="เลื่อนภาพตาม slice"></div>
+    </div>
+    <div id="cryo-picker-bar" class="cryo-picker-bar" hidden><button id="cryo-prev" type="button" aria-label="Previous image">&lsaquo;</button><div id="cryo-thumbnails" class="cryo-thumbnails" aria-label="Cryosection images"></div><button id="cryo-next" type="button" aria-label="Next image">&rsaquo;</button></div>
+    <div id="reference-display-controls" class="reference-display-controls" aria-label="ปรับการแสดงผลภาพ PNG">
+      <span>การแสดงผล PNG · ไม่ใช่ Window/Level HU จริง (ไฟล์ไม่มี HU)</span>
+      <button type="button" data-contrast="normal" class="on" aria-pressed="true">ปกติ</button>
+      <button type="button" data-contrast="bone" aria-pressed="false">เห็นกระดูก</button>
+      <button type="button" data-contrast="tissue" aria-pressed="false">เห็นเนื้อเยื่อ</button>
+      <button type="button" id="contrast-reset">รีเซ็ต</button>
+    </div>
+    <button id="toggle-left-panel" class="reference-collapse-toggle" aria-label="ยุบรายการชุดภาพ">‹</button>
+    <button id="toggle-right-panel" class="reference-collapse-toggle" aria-label="ยุบข้อมูลชุดภาพ">›</button>
+    <button id="reference-crop-toggle" class="reference-collapse-toggle" hidden>ดูภาพต้นฉบับเต็ม</button>
+  </section>
+  <aside class="reference-panel reference-details" aria-label="ข้อมูลและแหล่งที่มาของชุดภาพ">
+    <div class="reference-panel-head"><h2>ข้อมูลชุดภาพ</h2><button id="close-right-panel" aria-label="ยุบข้อมูลชุดภาพ">›</button></div>
+    <p id="reference-dataset">Visible Human Male</p>
+    <p><span class="hint">ชนิดภาพ</span><br><strong id="reference-modality">CT axial</strong></p>
+    <p><span class="hint">บริเวณ</span><br><strong id="reference-region">ทั้งร่างกาย</strong></p>
+    <p><span class="hint">จำนวนไฟล์ที่มีจริง</span><br><strong id="reference-total">—</strong></p>
+    <p id="reference-description"></p>
+    <p><a id="reference-source" class="reference-source" href="https://www.nlm.nih.gov/research/visible/visible_human.html" target="_blank" rel="noreferrer">เปิดแหล่งข้อมูล NLM</a></p>
+    <h3>ข้อจำกัด</h3><p id="reference-limitation" class="reference-notice">ข้อมูลจากอาสาสมัครหนึ่งราย ไม่ใช่เคสวินิจฉัย ไม่มี HU ใน viewer นี้</p>
+    <p id="reference-crop-note" class="reference-notice" hidden></p>
+  </aside>
+</main>
+<main id="page-positioning" class="tool-page positioning-page" hidden>
+  <aside class="tool-left"><div class="hint">คลังท่าถ่ายภาพ</div><h2>เลือกการตรวจ</h2><div class="study-list" id="position-list"></div></aside>
+  <section class="position-center"><div class="bar position-heading"><button id="position-back">← กลับ</button><div><h1 id="position-title">Chest PA · ยืน</h1><p class="hint">ท่าถ่ายภาพทรวงอก</p></div></div><div class="bar position-tabs"><button class="on" data-position-tab="pose">ท่า 3 มิติ</button><button data-position-tab="image">ภาพที่ได้</button></div><div id="position-3d" class="position-diagram position-3d"><div class="position-3d-legend"><span>หลอดรังสี</span><span>ผู้ป่วย</span><span>ตัวรับภาพ</span></div></div><div id="position-diagram" class="position-diagram" hidden></div><p id="position-3d-note" class="position-3d-note">ทิศทาง PA: ลำรังสีผ่านจากด้านหลังไปด้านหน้า โมเดลร่างกายเป็นท่ายืนกายวิภาคและไม่มี rig สำหรับขยับแขนให้เป็นท่าถ่ายจริง</p><div id="position-stats" class="position-stats"></div><section class="card"><h2>จัดท่าผู้ป่วย</h2><ul id="position-checklist"></ul></section></section>
+  <aside class="position-right"><section class="card"><div class="hint">หลักการจัดท่า</div><h2 id="position-note-title">Chest PA</h2><p id="position-note"></p><p><a href="https://gravitas.acr.org/PPTS/DownloadPreviewDocument?DocId=129&ReleaseId=2" target="_blank" rel="noreferrer">ACR practice parameter: chest radiography</a></p></section><section class="card"><strong>จุดที่ควรตรวจ</strong><p id="position-quality"></p><p class="hint">รายละเอียดท่าจริงให้ยึด protocol ของหน่วยงาน</p></section></aside>
+</main>
+<main id="page-bmd" class="tool-page bmd-page" hidden>
+  <aside class="tool-left">
+    <div class="bmd-panel-title"><span class="bmd-panel-code">INPUT ·</span> <span class="bmd-panel-th">พารามิเตอร์</span></div>
+    <span id="bmd-title" class="sr-only">T-score จากเครื่อง DXA</span>
+    <label class="number-field">กลุ่มผู้ป่วย
+      <select id="bmd-group" aria-label="กลุ่มผู้ป่วย">
+        <option value="t">หญิงหลังหมดประจำเดือน / ชาย ≥50 ปี (T)</option>
+        <option value="z">หญิงก่อนหมดฯ / ชาย &lt;50 / เด็ก (Z)</option>
+      </select>
+    </label>
+    <h3 class="bmd-section-label">ตำแหน่งที่วัด</h3>
+    <div class="bar" id="bmd-sites" role="group" aria-label="ตำแหน่งที่วัด">
+      <button class="on" data-site="spine" aria-pressed="true">L1–L4</button>
+      <button data-site="neck" aria-pressed="false">คอกระดูกต้นขา</button>
+      <button data-site="hip" aria-pressed="false">สะโพกรวม</button>
+    </div>
+    <p id="bmd-site-note" class="hint" aria-live="polite">L1–L4: กระดูกงอกหรือความเสื่อมอาจทำให้ค่า BMD กระดูกสันหลังสูงเกินจริง โดยเฉพาะในผู้สูงอายุ</p>
+    <label class="number-field">BMD ของผู้ป่วย (g/cm²)
+      <input id="bmd-value" type="number" step="0.001" inputmode="decimal" aria-describedby="bmd-value-error">
+      <span id="bmd-value-error" class="field-error" aria-live="polite"></span>
+    </label>
+    <label class="number-field"><span id="bmd-mean-label">ค่าเฉลี่ยอ้างอิงวัยหนุ่มสาว (g/cm²)</span>
+      <input id="bmd-mean" type="number" step="0.001" inputmode="decimal" aria-describedby="bmd-mean-error">
+      <span id="bmd-mean-error" class="field-error" aria-live="polite"></span>
+    </label>
+    <label class="number-field">SD ของกลุ่มอ้างอิง (g/cm²)
+      <input id="bmd-sd" type="number" step="0.001" inputmode="decimal" aria-describedby="bmd-sd-error">
+      <span id="bmd-sd-error" class="field-error" aria-live="polite"></span>
+    </label>
+    <p id="bmd-warning" class="bmd-warnings" aria-live="polite"></p>
+    <p class="hint bmd-input-note">กรอกค่าเฉลี่ยและ SD จากฐานอ้างอิงที่เหมาะกับเครื่องและประชากรของผู้ป่วย ค่า Z-score ต้องใช้ข้อมูลอ้างอิงที่ตรงกับอายุ เพศ และเชื้อชาติ/ชาติพันธุ์ ไม่มีการใส่ค่าอ้างอิงสำเร็จรูป</p>
+    <div class="bmd-input-footer"><span class="bmd-live">LIVE · คำนวณอัตโนมัติ</span><button id="bmd-reset">ล้างค่า</button></div>
+  </aside>
+  <div class="bmd-workspace">
+    <section class="bmd-center card">
+    <h1 class="bmd-panel-title"><span class="bmd-panel-code">RESULT · <span id="bmd-score-mode">T-SCORE</span></span> <span class="bmd-panel-th">· <span id="bmd-result-heading">L1–L4</span></span></h1>
+    <div class="bmd-status-strip" id="bmd-status-strip"><strong>สถานะ: <span id="bmd-label">รอข้อมูล</span></strong><span id="bmd-english">กรอกค่าเพื่อคำนวณ</span></div>
+    <div class="bmd-score-row"><div id="bmd-result" class="bmd-result" hidden aria-live="polite"><strong id="bmd-score"></strong></div><div class="bmd-metrics"><span>BMD <b id="bmd-metric-value">—</b> g/cm²</span><span>REF <b id="bmd-metric-mean">—</b> g/cm²</span><span>Δ <b id="bmd-metric-delta">—</b> · SD <b id="bmd-metric-sd">—</b></span></div></div>
+    <div id="bmd-scale-wrap" class="score-scale" hidden>
+      <div class="scale-bar" id="score-scale" aria-label="มาตราส่วน T-score −4 ถึง +2">
+        <span class="scale-band" aria-label="กระดูกพรุน">กระดูกพรุน</span><span class="scale-band" aria-label="กระดูกบาง">กระดูกบาง</span><span class="scale-band" aria-label="ปกติ">ปกติ</span>
+        <i id="score-marker" class="scale-marker" aria-hidden="true"></i><span id="scale-marker-label" class="scale-marker-label"></span>
+        <span id="scale-threshold-low" class="scale-tick">−2.5</span><span id="scale-threshold-high" class="scale-tick">−1.0</span>
+      </div>
+      <div class="scale-endpoints"><span>−4</span><span>−3</span><span>−2</span><span>−1</span><span>0</span><span>+1</span><span>+2</span></div>
+      <p id="bmd-out-of-range" class="scale-out-of-range" aria-live="polite"></p>
+    </div>
+    <div class="bmd-formula-line"><span id="bmd-formula-name">T = (BMD − ค่าเฉลี่ยอ้างอิง) ÷ SD</span><strong id="bmd-formula">กรอกค่าทั้งสามช่องเพื่อคำนวณ</strong></div>
+    <div class="bar bmd-actions"><button data-goto="quiz">เปิดคลังภาพอ้างอิง</button></div>
+    </section>
+    <div class="bmd-bottom">
+    <div id="spine-diagram" class="spine-diagram" aria-label="ภาพจำลองตำแหน่งกระดูกสันหลัง L1 ถึง L4">
+      <svg viewBox="0 0 260 330" role="img" aria-labelledby="spine-title spine-desc">
+        <title id="spine-title">ภาพจำลองกระดูกสันหลังส่วนเอว L1–L4</title><desc id="spine-desc">ภาพวาดแผนผังจากกราฟิกที่สร้างในโครงการ แสดงกระดูกสันหลังสี่ระดับ</desc>
+        <path d="M130 20 C110 55 147 70 125 102 C104 132 148 151 127 181 C107 211 148 232 128 264 C115 286 130 303 130 316" fill="none" stroke="#38C8BE" stroke-width="7" stroke-linecap="round" opacity=".55"/>
+        <g fill="#c9d5df" stroke="#8293a3" stroke-width="2">
+          <path d="M82 35 Q130 20 178 35 L188 46 180 67 Q130 79 80 67 L72 46Z"/><path d="M78 101 Q130 86 182 101 L192 113 181 135 Q130 147 79 135 L68 113Z"/>
+          <path d="M75 168 Q130 153 185 168 L194 180 183 202 Q130 214 77 202 L66 180Z"/><path d="M72 235 Q130 220 188 235 L198 248 185 270 Q130 283 75 270 L62 248Z"/>
+        </g>
+        <g fill="#182634" stroke="#38C8BE" stroke-width="2"><ellipse cx="130" cy="52" rx="16" ry="10"/><ellipse cx="130" cy="118" rx="16" ry="10"/><ellipse cx="130" cy="185" rx="16" ry="10"/><ellipse cx="130" cy="252" rx="16" ry="10"/></g>
+        <g fill="#e7eef5" font-size="15" font-weight="700" text-anchor="middle"><text x="30" y="57">L1</text><text x="30" y="123">L2</text><text x="30" y="190">L3</text><text x="30" y="257">L4</text></g>
+        <path d="M53 34v238" stroke="#38C8BE" stroke-width="2" stroke-dasharray="5 5"/>
+      </svg>
+    </div>
+    <section class="card bmd-education-card"><div class="bmd-panel-title"><span class="bmd-panel-code">NOTE ·</span> <span class="bmd-panel-th">ข้อควรรู้</span></div>
+      <p id="bmd-education">กลุ่มนี้ใช้ T-score ตามเกณฑ์ WHO/ISCD ผลจากเครื่องคำนวณนี้ใช้เรียนรู้เท่านั้น การแปลผลจริงต้องใช้รายงาน DXA และบริบททางคลินิก</p>
+      <p><a href="https://iscd.org/learn/official-positions/" target="_blank" rel="noreferrer">ISCD Official Positions (ผู้ใหญ่)</a></p>
+      <p><a href="https://iscd.org/text-pediatric-positions/" target="_blank" rel="noreferrer">ISCD Official Pediatric Positions</a></p>
+      <p><a href="https://iris.who.int/bitstream/handle/10665/42841/WHO_TRS_921.pdf?sequence=1" target="_blank" rel="noreferrer">WHO Technical Report Series 921</a></p>
+    </section>
+    </div>
+  </div>
+</main>
+<footer>โมเดล: BodyParts3D © The Database Center for Life Science · HuBMAP Consortium / Human Reference Atlas · Z-Anatomy - The libre 3D atlas of anatomy - CC-BY-SA 4.0 · NLM Visible Human Project · <a href="models/ATTRIBUTION.txt" target="_blank" rel="noreferrer">เครดิตและใบอนุญาต</a></footer>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module" src="main.js"></script>
+<script type="module" src="tools.js"></script>
+<script type="module" src="positioning3d.js"></script>
+<script type="module" src="bmd.js"></script>
+</body>
+</html>
+
+

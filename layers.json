@@ -1,0 +1,96 @@
+{
+  "model": "models/body.glb",
+  "layers": [
+    {
+      "id": "skin",
+      "label": "ผิวหนัง/ไขมัน",
+      "color": "#d4a184",
+      "match": "skin|integument|\\bfat\\b|adipose|pubic hair",
+      "on": true
+    },
+    {
+      "id": "eyes",
+      "label": "ดวงตา",
+      "color": "#b17e72",
+      "match": "eyeball|\\b(?:retina|lens|cornea|sclera|iris|pupil|fovea|macula|vitreous|choroid)\\b|anterior chamber|aqueous humor|optic disc|ciliary (?:body|muscle|processes?)|ora serrata|schlemm.?s canal|conjunctiva|eyelid|lacrimal (?:canaliculus|gland|lake|duct|sac)|suspensory ligament of (?:left|right) lens|corneo scleral junction|central retinal (?:artery|vein)|long posterior ciliary artery|extraocular muscle|(?:left|right) (?:inferior|superior|medial|lateral) rectus|(?:left|right) (?:inferior|superior) oblique",
+      "on": false
+    },
+    {
+      "id": "artery",
+      "label": "หลอดเลือดแดง",
+      "color": "#c93435",
+      "match": "arter|aorta|arterial|trunk|pulmonary trunk|costocervical|thyrocervical|celiac|plantar arch|aortic arch|left marginal branch|ventricular branch",
+      "on": true
+    },
+    {
+      "id": "vein",
+      "label": "หลอดเลือดดำ",
+      "color": "#3d3c83",
+      "match": "vein|vena|venous|(?<!lactiferous )sinus|hepatovenous",
+      "on": true
+    },
+    {
+      "id": "lymph",
+      "label": "ระบบน้ำเหลือง",
+      "color": "#aab85d",
+      "match": "lymph|thoracic duct",
+      "on": true
+    },
+    {
+      "id": "muscle",
+      "label": "กล้ามเนื้อ",
+      "color": "#763d38",
+      "match": "muscle|musculus|^m\\. |oblique|rectus|sphincter|pectoralis|piriformis|psoas|serratus|subclavius|anconeus|brachialis|rhomboid|levator|tensor|diaphragm|tongue|obturator|transversus",
+      "on": true
+    },
+    {
+      "id": "airway",
+      "label": "ปอดและทางเดินหายใจ",
+      "color": "#d79a9b",
+      "match": "lung|bronch|trachea|laryn|pharyn",
+      "on": true
+    },
+    {
+      "id": "digestive",
+      "label": "ทางเดินอาหาร",
+      "color": "#a96552",
+      "match": "liver|hepatic|hepat|gall|bile|stomach|intestin|duodenum|jejen|jejun|ileum|colon|caecum|cecum|appendix|rectum|esophag|pancrea|spleen|mesenter|mesoappendix|taenia|mucosa|tongue|ileocecal|ampulla|cystic duct|uncinate|quadrate lobe|anterolateral segment|superomedial segment|inferomedial segment|anterosuperior segment|posteroinferior segment|posterosuperior segment|anteroinferior segment|ucinate process|uncinate process",
+      "on": true
+    },
+    {
+      "id": "reproductive",
+      "label": "สืบพันธุ์/ปัสสาวะ",
+      "color": "#a96368",
+      "match": "\\b(?:uterus|uterine|uterovesical|uterosacral)\\b|ovary|ovari|vagina|vulva|cervix|fallopian|mammary|breast|placenta|prostate|ureter|urethra|bladder|testis|ovum|ductus deferens|seminal|penis|clitoris|lactiferous|umbilical|amnion|chorionic|cornua|mesosalpinx|cervical os|follicles|basal plate",
+      "on": true
+    },
+    {
+      "id": "organ",
+      "label": "อวัยวะ/ต่อม",
+      "color": "#b17e72",
+      "match": "heart|kidney|renal|minor calyx|major calyx|adrenal|thyroid|thymus|gland|cusp|leaflet|atrium|(?:left|right) ventricle|cavity of|valve|cartilage|ligament|tendon|gingiva|tooth|palate|areola|nipple|naris|nasal|corpus|hyoid|meniscus|trochlear groove|condyle|enthesis|perichondular|hilum|carina|tonsil|Yao|interventricular septum",
+      "on": true
+    },
+    {
+      "id": "brain",
+      "label": "สมอง",
+      "color": "#b99a9d",
+      "match": "cerebr|\\bbrain\\b|gyrus|(?:lateral|third|fourth) ventricle|midbrain|cerebell|medulla oblongata|\\bpons\\b|hypothalam|thalam|hippocamp|\\binsula\\b|habenula|collicul|pineal|aqueduct|tuber cinereum|white matter|internal capsule|\\ballen\\b|olfactory|caudate nucleus|(?:head|body|tail) of caudate|putamen|globus pallidus|amygdal|nucleus|fornix|optic tract|commissure|preoptic|tegmentum|inferior olive|zona incerta|paracentral lobule|precuneus|planum|occipital lobe|frontal pole|parietal operculum|optic chiasm|parietal lobule|substantia nigra|red nucleus",
+      "on": true
+    },
+    {
+      "id": "nerve",
+      "label": "เส้นประสาท",
+      "color": "#e4cf72",
+      "match": "nerve|plexus|ganglion|spinal cord|cerebr|brain|gyrus|ventricle|cerebell|medulla|pons|hypothalam|thalam|hippocamp|insula|habenula|collicul|pineal|pituitary|aqueduct|canal of spinal|tuber cinereum|white matter|internal capsule|allen|olfactory|caudate|putamen|globus pallidus|amygdal|nucleus|fornix|optic tract|commissure|preoptic|tegmentum|inferior olive|zona incerta|paracentral lobule|precuneus|planum|occipital lobe|frontal pole|parietal operculum|spinal cord segment|optic chiasm|dura mater|parietal lobule",
+      "on": true
+    },
+    {
+      "id": "bone",
+      "label": "กระดูก/กระดูกอ่อน",
+      "color": "#e4dac5",
+      "match": "bone|skull|vertebra|rib|femur|humerus|sternum|pelvi|scapula|clavicle|tibia|fibula|radius|ulna|phalanx|phalange|carpal|tarsal|patella|calcaneus|talus|sacrum|coccyx|maxilla|mandible|vomer|ethmoid|atlas|axis|manubrium|xiphoid|costal cartilage|cartilage|capitate|hamate|lunate|pisiform|scaphoid|trapezium|trapezoid|triquetral|carpal|intercondylar fossa",
+      "on": true
+    }
+  ]
+}

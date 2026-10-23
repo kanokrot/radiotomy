@@ -1,0 +1,85 @@
+{
+  "images": {
+    "image": {
+      "file": "./static/images/positioning/chest-pa-erect.jpg",
+      "alt": "ภาพเอกซเรย์ทรวงอก PA erect แสดงกายวิภาคปกติ",
+      "credit": "Chest X-ray · Ptrump16 · Wikimedia Commons",
+      "source": "https://commons.wikimedia.org/wiki/File:Chest_X-ray.jpg",
+      "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "licenseLabel": "CC BY-SA 4.0",
+      "modification": "ลดขนาดจากไฟล์ต้นฉบับ 4113×4613 เป็น 1280×1436; ไม่ crop",
+      "crop": null
+    },
+    "lateral": {
+      "file": "./static/images/positioning/chest-lateral-erect.png",
+      "alt": "ภาพเอกซเรย์ทรวงอกท่าด้านข้างพร้อมตัวเลขระบุตำแหน่งกายวิภาค",
+      "credit": "Brent Burbridge · Undergraduate Diagnostic Imaging Fundamentals · Fig-5.3b-Lat.png",
+      "source": "https://www.saskoer.ca/undergradimaging/chapter/approach-to-the-chest-x-ray-cxr/",
+      "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "licenseLabel": "CC BY-NC-SA 4.0",
+      "modification": "บันทึกภาพจากแหล่งต้นฉบับไว้ในโปรเจกต์; ไม่ crop",
+      "crop": null
+    },
+    "ap": {
+      "file": "./static/images/positioning/chest-ap-erect.jpg",
+      "alt": "ภาพเอกซเรย์ทรวงอก AP; แหล่งภาพไม่ได้ระบุท่านั่งหรือท่ายืน",
+      "credit": "Normal AP.JPG · James Heilman, MD · Wikimedia Commons",
+      "source": "https://commons.wikimedia.org/wiki/File:Normal_AP.JPG",
+      "license": "https://creativecommons.org/licenses/by/3.0/",
+      "licenseLabel": "CC BY 3.0",
+      "modification": "ลดขนาดจากไฟล์ต้นฉบับ 2240×2262 เป็น 1280×1293; ไม่ crop",
+      "crop": null
+    },
+    "supine": {
+      "file": "./static/images/positioning/chest-ap-supine.webp",
+      "alt": "ภาพเอกซเรย์ทรวงอก AP supine แผง (a) จาก Figure 2; เคส pneumothorax ที่ภาพรังสีพลาดการวินิจฉัย",
+      "credit": "Zhang et al. · Critical Care 2006 · Figure 2(a)",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1751015/",
+      "license": "https://creativecommons.org/licenses/by/2.0/",
+      "licenseLabel": "CC BY 2.0",
+      "modification": "crop เฉพาะแผง (a) ภาพ CXR ออกจาก Figure 2; ตัดแผง ultrasound และ CT ออก",
+      "crop": {
+        "panel": "Figure 2(a)",
+        "coordinates": "ไฟล์เดิม 600×477; เฉพาะกรอบ CXR (รวมป้ายแผง a)"
+      }
+    },
+    "decubitusLeft": {
+      "file": "./static/images/positioning/chest-decubitus-left.webp",
+      "alt": "ภาพเอกซเรย์ทรวงอก left lateral decubitus (LLD), Figure 1A; air trapping ในปอดซ้าย",
+      "credit": "Newby et al. · Cureus 2020 · Figure 1A · Left lateral decubitus",
+      "source": "https://doi.org/10.7759/cureus.8161",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "licenseLabel": "CC BY 4.0",
+      "modification": "crop panel A แยกจาก Figure 1 ในบทความ; ป้าย 1A และ marker LLD คงไว้",
+      "crop": {
+        "panel": "Figure 1A",
+        "coordinates": "panel A ด้านซ้ายของ Figure 1; ไฟล์ crop 1090×915"
+      }
+    },
+    "decubitusRight": {
+      "file": "./static/images/positioning/chest-decubitus-right.webp",
+      "alt": "ภาพเอกซเรย์ทรวงอก right lateral decubitus (RLD), Figure 1B; physiological lung collapse",
+      "credit": "Newby et al. · Cureus 2020 · Figure 1B · Right lateral decubitus",
+      "source": "https://doi.org/10.7759/cureus.8161",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "licenseLabel": "CC BY 4.0",
+      "modification": "crop panel B แยกจาก Figure 1 ในบทความ; ป้าย 1B และ marker RLD คงไว้",
+      "crop": {
+        "panel": "Figure 1B",
+        "coordinates": "panel B ด้านขวาของ Figure 1; ไฟล์ crop 895×915"
+      }
+    },
+    "lordotic": {
+      "file": "./assets/positioning/chest-ap-lordotic.webp",
+      "alt": "AP chest radiograph identified as lordotic in Radiopaedia's Normal chest imaging examples (AP adult female, example 2); clavicles are projected superior to the lung apices.",
+      "credit": "Normal lordotic chest radiograph - Ian Bickle - Radiopaedia",
+      "source": null,
+      "license": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+      "licenseLabel": "CC BY-NC-SA 3.0 (modified)",
+      "nonCommercial": true,
+      "modification": "แปลงจาก JPEG 630 x 486 เป็น WebP คุณภาพ 90; ไม่ crop หรือ resize. บทความ Radiopaedia จัด AP adult female example 2 เป็น lordotic view; ป้ายบนภาพระบุ \"AP ERECT\".",
+      "crop": null,
+      "sourcePending": true
+    }
+  }
+}
